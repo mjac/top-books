@@ -5,6 +5,7 @@ namespace TopBooks;
 class Book
 {
 	private $title;
+	private $description = '';
 	private $referralUrl;
 
 	public function __construct($title)
@@ -35,6 +36,16 @@ class Book
 		}
 
 		throw new \Exception('Could not find a suitable portion of the title to convert to an id');
+	}
+
+	public function getDescription()
+	{
+		return $this->description;
+	}
+
+	public function setDescription($description)
+	{
+		$this->description = $description;
 	}
 
 	public function getReferralUrl()
