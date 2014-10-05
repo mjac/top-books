@@ -14,22 +14,27 @@ class Book
 
 	public function getId()
 	{
-		if (preg_match('/^([a-z0-9 ]+)/i', $this->title, $matches))
-		{
-			$shortTitle = $matches[1];
+		$id = $this->getShortTitle();
 
-			$shortTitle = str_replace(' ', '', $shortTitle);
-			$shortTitle = strtolower($shortTitle);
+		$id = str_replace(' ', '', $id);
+		$id = strtolower($id);
 
-			return $shortTitle;
-		}
-
-		throw new \Exception('Could not find a suitable portion of the title to convert to an id');
+		return $id;
 	}
 
 	public function getTitle()
 	{
 		return $this->title;
+	}
+
+	public function getShortTitle()
+	{
+		if (preg_match('/^([a-z0-9 ]+)/i', $this->title, $matches))
+		{
+			return $matches[1];
+		}
+
+		throw new \Exception('Could not find a suitable portion of the title to convert to an id');
 	}
 
 	public function getReferralUrl()
