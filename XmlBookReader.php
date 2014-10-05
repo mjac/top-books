@@ -28,8 +28,8 @@ class XmlBookReader implements IBookReader
 
 	private function _readBook($bookXml)
 	{
-		$book = new Book($bookXml->title);
-		$book->setReferralUrl($bookXml->url);
+		$book = new Book((string)$bookXml->title);
+		$book->setReferralUrl((string)$bookXml->url);
 		return $book;
 	}
 }
